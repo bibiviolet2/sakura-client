@@ -1,0 +1,3 @@
+- objednávky  nejdříve 9:30, nejpozději 15
+- rozestup 1,25 hodiny
+- nejmenší blok 3h
