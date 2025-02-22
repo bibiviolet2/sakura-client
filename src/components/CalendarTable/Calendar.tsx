@@ -14,119 +14,6 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
     return firstDayOfWeek;
   });
 
-  const mockReservations: Reservation[] = [
-    {
-      startTime: new Date(currentWeekStart.getTime() + 0 * 86400000).setHours(
-        9,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 0 * 86400000).setHours(
-        14,
-        0,
-        0,
-        0
-      ),
-    }, // Pondělí: 9:00 - 14:00
-    {
-      startTime: new Date(currentWeekStart.getTime() + 1 * 86400000).setHours(
-        10,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 1 * 86400000).setHours(
-        15,
-        0,
-        0,
-        0
-      ),
-    }, // Úterý: 10:00 - 15:00
-    {
-      startTime: new Date(currentWeekStart.getTime() + 2 * 86400000).setHours(
-        12,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 2 * 86400000).setHours(
-        17,
-        0,
-        0,
-        0
-      ),
-    }, // Středa: 12:00 - 17:00
-    {
-      startTime: new Date(currentWeekStart.getTime() + 3 * 86400000).setHours(
-        9,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 3 * 86400000).setHours(
-        14,
-        0,
-        0,
-        0
-      ),
-    }, // Čtvrtek: 9:00 - 14:00
-    {
-      startTime: new Date(currentWeekStart.getTime() + 4 * 86400000).setHours(
-        10,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 4 * 86400000).setHours(
-        15,
-        0,
-        0,
-        0
-      ),
-    }, // Pátek: 10:00 - 15:00
-    {
-      startTime: new Date(currentWeekStart.getTime() + 5 * 86400000).setHours(
-        14,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 5 * 86400000).setHours(
-        19,
-        0,
-        0,
-        0
-      ),
-    }, // Sobota: 14:00 - 19:00
-    {
-      startTime: new Date(currentWeekStart.getTime() + 6 * 86400000).setHours(
-        11,
-        0,
-        0,
-        0
-      ),
-      endTime: new Date(currentWeekStart.getTime() + 6 * 86400000).setHours(
-        16,
-        0,
-        0,
-        0
-      ),
-    }, // Neděle: 11:00 - 16:00
-  ];
-
-  const isSlotReserved = (dayIndex: number, hour: number, slot: number) => {
-    const slotTime = new Date(currentWeekStart.getTime() + dayIndex * 86400000);
-    slotTime.setHours(hour, (slot * 60) / slotsPerHour, 0, 0);
-    const slotTimestamp = slotTime.getTime();
-
-    return mockReservations.some(
-      (reservation) =>
-        slotTimestamp >= reservation.startTime &&
-        slotTimestamp < reservation.endTime
-    );
-  };
-
   const formattedDates = useMemo(() => {
     return Array.from({ length: 7 }, (_, dayIndex) => {
       const currentDate = new Date(
@@ -151,18 +38,17 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
   const [isStartSelected, setIsStartSelected] = useState<boolean>(false);
 
   const isSlotSelected = (dayIndex: number, hour: number, slot: number) => {
-    if (!selectedStartTime) return false;
-    const selectedStart = selectedStartTime;
-    const selectedEnd = selectedEndTime;
+    if (!selectedStartTime || !selectedEndTime) return false;
+    const selectedStart = new Date(
+      `${selectedDate}T${selectedStartTime}`
+    ).getTime();
+    const selectedEnd = new Date(
+      `${selectedDate}T${selectedEndTime}`
+    ).getTime();
     const slotTime = new Date(currentWeekStart.getTime() + dayIndex * 86400000);
-    slotTime.setHours(hour, (slot * 60) / slotsPerHour, 0, 0);
+    slotTime.setHours(hour, (slot * 60) / slotsPerHour);
     const slotTimestamp = slotTime.getTime();
-    return Boolean(
-      (selectedEnd &&
-        slotTimestamp >= selectedStart &&
-        slotTimestamp < selectedEnd) ||
-        (selectedStartTime && slotTimestamp === selectedStart)
-    );
+    return slotTimestamp >= selectedStart && slotTimestamp <= selectedEnd;
   };
 
   const handleSlotClick = (dayIndex: number, hour: number, slot: number) => {
@@ -171,6 +57,7 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
       setSelectedStartTime(null);
       setSelectedEndTime(null);
       setIsStartSelected(false);
+      return;
     }
 
     const slotStartHour = hour;
@@ -213,9 +100,7 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
                 ? new Date(selectedDate).toISOString().split("T")[0]
                 : ""
             }
-            onChange={(e) =>
-              setSelectedDate(new Date(e.target.value).getTime())
-            }
+            onChange={(e) => setSelectedDate(Number(e.target.value))}
           />
         </label>
         <label>
@@ -229,12 +114,7 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
                   })
                 : ""
             }
-            onChange={(e) => {
-              const [hour, minute] = e.target.value.split(":").map(Number);
-              const updatedTime = new Date(selectedDate || Date.now());
-              updatedTime.setHours(hour, minute, 0, 0);
-              setSelectedStartTime(updatedTime.getTime());
-            }}
+            onChange={(e) => setSelectedStartTime(Number(e.target.value))}
           >
             {hours.map((hour) => (
               <option key={hour} value={`${hour}:00`}>
@@ -254,12 +134,7 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
                   })
                 : ""
             }
-            onChange={(e) => {
-              const [hour, minute] = e.target.value.split(":").map(Number);
-              const updatedTime = new Date(selectedDate || Date.now());
-              updatedTime.setHours(hour, minute, 0, 0);
-              setSelectedEndTime(updatedTime.getTime());
-            }}
+            onChange={(e) => setSelectedEndTime(Number(e.target.value))}
           >
             {hours.map((hour) => (
               <option key={hour} value={`${hour}:00`}>
@@ -305,22 +180,7 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
         </button>
       </div>
       <h3>
-        Vybraný čas:{" "}
-        {selectedDate
-          ? new Date(selectedDate).toLocaleDateString("cs-CZ")
-          : "Není vybrán"}{" "}
-        {selectedStartTime
-          ? new Date(selectedStartTime).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })
-          : "--:--"}
-        {selectedEndTime
-          ? ` - ${new Date(selectedEndTime).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}`
-          : ""}
+        Vybraný čas: {selectedDate} {selectedStartTime} - {selectedEndTime}
       </h3>
 
       <table className="calendar-table">
@@ -344,13 +204,8 @@ const CalendarTable = ({ startHour = 9, endHour = 15, slotsPerHour = 4 }) => {
                     key={`${dayIndex}-${hour}-${slot}`}
                     className={`time-slot ${
                       isSlotSelected(dayIndex, hour, slot) ? "selected" : ""
-                    } ${
-                      isSlotReserved(dayIndex, hour, slot) ? "reserved" : ""
                     }`}
-                    onClick={() =>
-                      !isSlotReserved(dayIndex, hour, slot) &&
-                      handleSlotClick(dayIndex, hour, slot)
-                    }
+                    onClick={() => handleSlotClick(dayIndex, hour, slot)}
                     aria-selected={isSlotSelected(dayIndex, hour, slot)}
                   ></td>
                 ))

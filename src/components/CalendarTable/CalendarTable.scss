@@ -50,6 +50,12 @@ th {
   color: white;
 }
 
+/* Zvýraznění rezervace */
+.time-slot.reserved {
+  background-color: rgba(232, 232, 232, 0.8);
+  color: white;
+}
+
 /* Fixní sloupec pro dny */
 .sticky-column {
   position: sticky;
