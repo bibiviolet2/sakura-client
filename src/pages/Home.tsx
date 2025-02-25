@@ -1,4 +1,4 @@
-import CalendarTable from "@components/CalendarTable/CalendarTable";
+import CalendarTable from "@components/CalendarTable/CalendarContainer";
 import styles from "@styles/Home.module.scss"; // Sass styl pro stránku
 
 const Home = () => {
