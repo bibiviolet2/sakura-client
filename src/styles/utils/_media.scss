@@ -1,0 +1,14 @@
+// styles/utils/_media.scss
+@import "./variables";
+
+@mixin media-up($size) {
+	@if map-has-key($breakpoints, $size) {
+		@media (min-width: map-get($breakpoints, $size)) {
+			@content;
+		}
+	}
+
+	@else {
+		@warn "⚠ Breakpoint `#{$size}` neexistuje!";
+	}
+}

@@ -1,0 +1,72 @@
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: rem(20);
+
+	@include media-up(lg) {
+		max-width: rem(750);
+	}
+
+	@include media-up(xl) {
+		max-width: rem(1100);
+	}
+
+	@include media-up(xxl) {
+		max-width: rem(1200);
+	}
+
+	&--main {
+		background: transparent no-repeat url(../../public/images/layout/main-bg.svg) right -80px;
+	}
+}
+
+// 🎯 Header
+.header {
+	&__title {
+		margin: 0;
+		font-size: rem(40);
+		padding: 0;
+		font-weight: 300;
+		text-transform: uppercase;
+		@include gradient-border;
+	}
+}
+
+// 🎯 Sidebar
+.sidebar {
+	background: #f8f8f8;
+	padding: 1rem;
+	border-radius: 8px;
+
+	&__title {
+		font-size: 1.2rem;
+		margin-bottom: 1rem;
+	}
+
+	&__list {
+		list-style: none;
+		padding: 0;
+	}
+
+	&__item {
+		margin-bottom: 0.5rem;
+	}
+
+	&__link {
+		color: #b34a50;
+		text-decoration: none;
+	}
+}
+
+// 🎯 Footer
+.footer {
+	background: #333;
+	color: white;
+	text-align: center;
+	padding: 1rem;
+	margin-top: 2rem;
+
+	&__text {
+		margin: 0;
+	}
+}

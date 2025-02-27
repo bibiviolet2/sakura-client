@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+@import "@styles/utils/media"; // Import media query mixin
+@import "@styles/utils/functions"; // Import media query mixin
+@import "@styles/utils/mixins"; // Import media query mixin
+
+@import "reset";
 @import "base";
-// @import "typography";
-// @import "layout";
+@import "layout";

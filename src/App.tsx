@@ -6,9 +6,9 @@ import ArticleDetail from "@pages/ArticleDetail";
 const App = () => {
   return (
     <Router>
-      <nav>
+      {/* <nav>
         <Link to="/">Domů</Link> | <Link to="/hodnoty">Hodnoty</Link>
-      </nav>
+      </nav> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:categoryId" element={<Category />} />

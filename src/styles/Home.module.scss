@@ -1,0 +1,37 @@
+@import "@styles/utils/media"; // Import media query mixin
+@import "@styles/utils/functions"; // Import media query mixin
+@import "@styles/utils/mixins"; // Import media query mixin
+
+// 🎨 Globalní layout
+.homeContainer {
+	display: flex;
+	flex-direction: column;
+	padding: rem(20);
+}
+
+
+
+// 🎯 Layout (Mobile-first – stacked)
+.layout {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+// 🎯 Hlavní obsah
+.layoutMain {
+	flex: 1;
+}
+
+// 🖥 Desktop Layout – Sidebar vedle obsahu
+@include media-up(md) {
+	.layout {
+		display: grid;
+		grid-template-columns: 2fr 1fr; // Hlavní obsah 2x větší než sidebar
+		gap: 2rem;
+	}
+
+	.layoutSidebar {
+		padding: 1.5rem;
+	}
+}
