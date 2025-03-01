@@ -1,16 +1,21 @@
 import React from "react";
 import { WithViewModel } from "@decorator/WithViewModel";
 import { ArticleDetailViewModel } from "./ArticleDetailViewModel";
+import Loader from "@components/Loader/Loader"; // ✅ Importujeme Loader
 
 const ArticleDetail: React.FC<{ viewModel: ArticleDetailViewModel }> = ({ viewModel }) => {
   const { article, loading } = viewModel;
 
-  if (loading) {
-    return <h2>načítám</h2>;
+  if (!loading) {
+    return <Loader />; // ✅ Použití Loader komponenty
+  }
+
+  if (!article) {
+    return <h2>Článek nenalezen</h2>;
   }
 
   return (
-    article && <div>
+    <div>
       <h1>{article.name}</h1>
       <p>{article.content}</p>
     </div>
