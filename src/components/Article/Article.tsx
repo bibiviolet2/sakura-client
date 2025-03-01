@@ -1,6 +1,8 @@
 import React from "react";
 import "./Article.scss"; // ✅ Import SCSS bez modularity
 import ArticleModel from "model/ArticleModel";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 type ArticleProps = {
   article: ArticleModel;
@@ -9,8 +11,10 @@ type ArticleProps = {
 const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
     <article className="article">
-      <h1 className="article__title">{article.title}</h1>
-      <p className="article__content">{article.content}</p>
+          <h1 className="article__title">{article.title}</h1>
+          <div className="article__content">
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{article.content}</ReactMarkdown>
+        </div>
     </article>
   );
 };
