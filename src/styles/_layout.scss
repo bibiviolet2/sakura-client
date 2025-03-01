@@ -1,7 +1,7 @@
 .container {
 	width: 100%;
 	margin: 0 auto;
-	padding-top: rem(20);
+	padding: 0 rem(20);
 
 	@include media-up(lg) {
 		max-width: rem(750);
@@ -20,12 +20,33 @@
 	}
 }
 
+.layout {
+	display: grid;
+	gap: 1rem;
+	align-items: start;
+	grid-template-columns: 1fr;
+
+	aside {
+		display: none;
+	}
+
+	@include media-up(lg) {
+		grid-template-columns: 1fr rem(400);
+
+		aside {
+			background: #f8f8f8;
+			padding: 1rem;
+		}
+	}
+}
+
 // 🎯 Header
 .header {
 	&__title {
 		margin: 0;
 		font-size: rem(40);
-		padding: 0;
+		padding-top: rem(40);
+		margin-right: rem(380);
 		font-weight: 300;
 		text-transform: uppercase;
 		@include gradient-border;
@@ -58,13 +79,21 @@
 	}
 }
 
+.nav {
+	&--main {
+		background-color: var(--secondary-color);
+	}
+}
+
 // 🎯 Footer
 .footer {
-	background: #333;
+	background-color: var(--secondary-color);
 	color: white;
 	text-align: center;
 	padding: 1rem;
 	margin-top: 2rem;
+	margin-left: rem(-40);
+	margin-right: rem(-40);
 
 	&__text {
 		margin: 0;
