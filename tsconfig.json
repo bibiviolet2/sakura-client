@@ -11,7 +11,8 @@
       "@pages/*": ["pages/*"],
       "@lib/*": ["lib/*"],
       "@graphql/*": ["graphql/*"],
-      "@decorator/*": ["decorator/*"]
+      "@decorator/*": ["decorator/*"],
+      "@plugins/*": ["plugins/*"]
     },
     "target": "es5",
     "lib": [
