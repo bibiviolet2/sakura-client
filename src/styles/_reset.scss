@@ -1,0 +1,90 @@
+// styles/reset.scss
+
+/* Box-sizing border-box pro všechny elementy */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* Základní reset pro nadpisy a text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	line-height: 1;
+	font-size: inherit;
+}
+
+/* Nadpisy mají svou váhu */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+
+/* Reset seznamů */
+ul,
+ol,
+li {
+	list-style: none;
+	padding: 0;
+}
+
+/* Reset odkazů */
+a {
+	color: inherit;
+}
+
+/* Reset tlačítek */
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Reset tabulek */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Obrázky maximálně ve svém rodiči */
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Resetování scrollbarů pro jednotný vzhled */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #bbb;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #999;
+}

@@ -5,8 +5,10 @@ import ArticleDetail from "@pages/ArticleDetail/ArticleDetail";
 const App = () => {
   return (
     <Router>
-      <nav>
-        <Link to="/">Domů</Link> | <Link to="/manzele-tarisovi/sheena">Sheena</Link>
+      <nav className="nav--main">
+        <div className="container">
+          <Link to="/">Domů</Link> | <Link to="/hodnoty">Hodnoty</Link>
+        </div>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
