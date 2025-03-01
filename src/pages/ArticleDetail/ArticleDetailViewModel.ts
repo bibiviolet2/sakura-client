@@ -2,9 +2,11 @@ import { makeAutoObservable, observable, runInAction } from "mobx";
 import { matchPath } from "react-router-dom";
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import { getArticle } from "@graphql/queries/GetArticle";
+import ArticleModel from "model/ArticleModel";
+import ChapterModel from "model/ChapterModel";
 
 export class ArticleDetailViewModel {
-  article: { slug: string; order: number; name: string; content: string } | null = null;
+  article: ArticleModel | null = null;
   categoryId = "";
   articleId = "";
   loading = false;
@@ -51,7 +53,8 @@ export class ArticleDetailViewModel {
 
       runInAction(() => {
         if (data.chapter && data.chapter.results.length > 0) {
-          this.article = observable(data.chapter.results[0]); // ✅ Uděláme `article` observable
+          this.article = new ChapterModel(); // ✅ Uděláme `article` observable
+          this.article.update(data.chapter.results[0]);
         } else {
           this.article = null;
           this.error = "Článek nebyl nalezen.";

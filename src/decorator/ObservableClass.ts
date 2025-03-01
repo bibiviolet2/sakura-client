@@ -1,8 +1,6 @@
 import { makeObservable, isObservableProp } from "mobx";
 
-export function ObservableClass<T extends { new (...args: any[]): {} }>(
-  target: T
-): T {
+export function ObservableClass<T extends { new (...args: any[]): object }>(target: T): T {
   return new Proxy(target, {
     construct(clz, args, newTarget) {
       const obj = Reflect.construct(clz, args, newTarget);

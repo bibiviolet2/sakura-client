@@ -2,11 +2,12 @@ import React from "react";
 import { WithViewModel } from "@decorator/WithViewModel";
 import { ArticleDetailViewModel } from "./ArticleDetailViewModel";
 import Loader from "@components/Loader/Loader"; // ✅ Importujeme Loader
+import Article from "@components/Article/Article";
 
 const ArticleDetail: React.FC<{ viewModel: ArticleDetailViewModel }> = ({ viewModel }) => {
   const { article, loading } = viewModel;
 
-  if (!loading) {
+  if (loading) {
     return <Loader />; // ✅ Použití Loader komponenty
   }
 
@@ -15,10 +16,7 @@ const ArticleDetail: React.FC<{ viewModel: ArticleDetailViewModel }> = ({ viewMo
   }
 
   return (
-    <div>
-      <h1>{article.name}</h1>
-      <p>{article.content}</p>
-    </div>
+    <Article article={article} />
   );
 };
 

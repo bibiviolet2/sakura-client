@@ -1,15 +1,13 @@
 import { ObservableClass } from "@decorator/ObservableClass";
-import { observable, action } from "mobx";
+import { observable } from "mobx";
+import ArticleModel from "./ArticleModel";
 
 @ObservableClass
-class ChapterModel {
-  @observable slug!: string;
-  @observable order!: number;
+class ChapterModel extends ArticleModel {
   @observable name!: string;
-  @observable content!: string;
 
-  @action updateContent(newContent: string) {
-    this.content = newContent;
+  public override get title() {
+    return this.name;
   }
 }
 
