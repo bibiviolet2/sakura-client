@@ -10,5 +10,8 @@ module.exports = override(
     "@utils": path.resolve(__dirname, "src/utils"),
     "@styles": path.resolve(__dirname, "src/styles"),
     "@pages": path.resolve(__dirname, "src/pages"),
+    "@lib": path.resolve(__dirname, "src/lib"),
+    "@graphql": path.resolve(__dirname, "src/graphql"),
+    "@decorator": path.resolve(__dirname, "src/decorator"),
   })
 );

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styles from "@styles/Home.module.scss"; // Sass styl pro stránku
 
 const Home = () => {
