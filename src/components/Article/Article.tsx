@@ -2,6 +2,7 @@ import React from "react";
 import "./Article.scss"; // ✅ Import SCSS bez modularity
 import ArticleModel from "model/ArticleModel";
 import Text from "@components/Text/Text";
+import Page from "@components/Page";
 
 type ArticleProps = {
   article: ArticleModel;
@@ -9,12 +10,13 @@ type ArticleProps = {
 
 const Article: React.FC<ArticleProps> = ({ article }) => {
   return (
-    <article className="article">
-        <h1 className="article__title">{article.title}</h1>
+    <Page
+        headlineText={article.title}
+    >
         <div className="article__content">
             <Text>{article.content}</Text>
-        </div>
-    </article>
+            </div>
+    </Page>
   );
 };
 

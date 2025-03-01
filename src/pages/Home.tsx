@@ -1,23 +1,22 @@
+import Page from "@components/Page";
 import Text from "@components/Text/Text";
 import { removeIndentation } from "@utils/removeIndentation";
 
-const Home = () => {
+const Home = () => { 
 
   return (
-      <div className="container container--main">
-      <header className="header">
-          <h1 className="header__title">Sakura <span className="hidden">Online</span></h1>
+      <Page
+        header={<>
+        <h1 className="header__title">Sakura <span className="hidden-for-screen-readers">Online</span></h1>
           <p>
             Běžně vnímáme realitu skrze vztah příčiny a následku:
             Něco se stane, a to způsobí něco dalšího.
           <br />
             Co kdybychom tento pohled otočili a začali přemýšlet o světě jednak?
           </p>
-      </header>
-
-      <div className="layout">
-        <main>
-          <Text>
+        </>}
+      >
+        <Text>
           {removeIndentation(`
             ## **Jednak jako staronový pojem**
 
@@ -59,25 +58,7 @@ const Home = () => {
             **Takže, jak jsme na tom nyní?**
             `)}
           </Text>
-          </main>
-          <aside>
-          {/* <section className={styles.categories}>
-            <h2>Prozkoumej kategorie</h2>
-            <ul>
-              <li>
-                <Link to="/hodnoty">💖 Hodnoty</Link>
-              </li>
-              <li>
-                <Link to="/filozofie">📖 Filozofie</Link>
-              </li>
-            </ul>
-          </section> */}
-          </aside>
-      </div>
-      <footer className="footer">
-        <p aria-hidden="true">🌿 Sakura Online – laskavost, výklad a zkoumání 🌿</p>
-      </footer>
-    </div>
+      </Page>
   );
 };
 

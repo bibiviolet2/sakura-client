@@ -1,19 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "@pages/Home";
 import ArticleDetail from "@pages/ArticleDetail/ArticleDetail";
+import Footer from "@components/Footer/Footer";
+import MainNav from "@components/MainNav/MainNav";
 
 const App = () => {
   return (
     <Router>
-      <nav className="nav--main">
-        <div className="container">
-          <Link to="/">Domů</Link> | <Link to="/hodnoty">Hodnoty</Link>
-        </div>
-      </nav>
+      <MainNav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:categoryId/:articleId" element={<ArticleDetail/>} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
