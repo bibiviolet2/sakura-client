@@ -1,6 +1,6 @@
 import React from "react";
 import "./Article.scss"; // ✅ Import SCSS bez modularity
-import ArticleModel from "model/ArticleModel";
+import ArticleModel from "@models/ArticleModel";
 import Text from "@components/Text/Text";
 import Page from "@components/Page";
 

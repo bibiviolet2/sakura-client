@@ -1,72 +1,44 @@
-import { makeAutoObservable, observable, runInAction } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
 import { matchPath } from "react-router-dom";
-import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
-import { getArticle } from "@graphql/queries/GetArticle";
-import ArticleModel from "model/ArticleModel";
-import ChapterModel from "model/ChapterModel";
+import { ArticleService } from "@services/ArticleService";
+import { injectable, inject } from "inversify";
 
 export class ArticleDetailViewModel {
-  article: ArticleModel | null = null;
   categoryId = "";
   articleId = "";
-  loading = false;
-  error: string | null = null;
 
-  client: ApolloClient<NormalizedCacheObject>;
+  @observable articleService: ArticleService;
 
-  constructor(client: ApolloClient<NormalizedCacheObject>) {
-    makeAutoObservable(this, {
-      article: observable, // ✅ Explicitně nastavíme jako `observable`
-    });
-    this.client = client;
+  constructor(@inject(ArticleService) articleService: ArticleService) {
+    makeAutoObservable(this);
+    this.articleService = articleService;
     this.loadArticle();
 
-    // ✅ Ujistíme se, že `this` bude správný
     window.addEventListener("popstate", () => this.loadArticle());
+  }
+
+  get article() {
+    return this.articleService?.article;
+  }
+
+  get loading() {
+    return this.articleService?.loading;
+  }
+
+  get error() {
+    return this.articleService?.error;
   }
 
   loadArticle() {
     const match = matchPath("/:categoryId/:articleId", window.location.pathname);
 
     if (!match || !match.params?.categoryId || !match.params?.articleId) {
-      this.article = null;
       return;
     }
 
     this.categoryId = match.params.categoryId;
     this.articleId = match.params.articleId;
 
-    this.fetchData();
-  }
-
-  async fetchData() {
-    if (!this.articleId) return;
-
-    this.loading = true;
-    this.error = null;
-
-    try {
-      const { data } = await this.client.query({
-        query: getArticle,
-        variables: { slug: this.articleId },
-      });
-
-      runInAction(() => {
-        if (data.chapter && data.chapter.results.length > 0) {
-          this.article = new ChapterModel(); // ✅ Uděláme `article` observable
-          this.article.update(data.chapter.results[0]);
-        } else {
-          this.article = null;
-          this.error = "Článek nebyl nalezen.";
-        }
-
-        this.loading = false;
-      });
-    } catch (error) {
-      runInAction(() => {
-        this.error = "Chyba při načítání článku.";
-        this.loading = false;
-      });
-    }
+    this.articleService?.loadArticle(this.articleId);
   }
 }
