@@ -3,6 +3,7 @@ import { WithViewModel } from "@decorator/WithViewModel";
 import { ArticleDetailViewModel } from "./ArticleDetailViewModel";
 import Loader from "@components/Loader/Loader"; // ✅ Importujeme Loader
 import Article from "@components/Article/Article";
+import Page from "@components/Page";
 
 type ArticleDetailProps = {
   type?: string;
@@ -16,7 +17,11 @@ const ArticleDetail: React.FC<ArticleDetailProps & { viewModel: ArticleDetailVie
   }
 
   if (!article) {
-    return <h2>Článek nenalezen</h2>;
+    return <Page
+    headlineText="Článek nenalezen"
+  >
+    <p>Tento článek tady není.</p>
+  </Page>;
   }
 
   return (

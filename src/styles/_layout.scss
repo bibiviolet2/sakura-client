@@ -17,6 +17,7 @@
 
 	&--main {
 		background: transparent no-repeat url(../../public/images/layout/main-bg.svg) right -80px;
+		min-height: rem(300);
 	}
 }
 
@@ -45,9 +46,9 @@
 	margin-right: rem(380);
 
 	&__title {
-		margin: 0;
+		margin: 0 0 rem(30) 0;
 		font-size: rem(40);
-		padding-top: rem(40);
+		padding-top: rem(60);
 		font-weight: 300;
 		text-transform: uppercase;
 		@include gradient-border;
