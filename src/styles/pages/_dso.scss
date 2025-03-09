@@ -1,0 +1,21 @@
+.page {
+	&--dso {
+		.separator {
+			text-align: center;
+
+			svg {
+				width: rem(16);
+				height: rem(16px);
+
+				path {
+					fill: #eee;
+					stroke: #444;
+				}
+
+				+ svg {
+					margin-left: rem(3);
+				}
+			}
+		}
+	}
+}

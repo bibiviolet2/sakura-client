@@ -42,11 +42,12 @@
 
 // 🎯 Header
 .header {
+	margin-right: rem(380);
+
 	&__title {
 		margin: 0;
 		font-size: rem(40);
 		padding-top: rem(40);
-		margin-right: rem(380);
 		font-weight: 300;
 		text-transform: uppercase;
 		@include gradient-border;

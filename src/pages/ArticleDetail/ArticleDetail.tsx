@@ -4,7 +4,11 @@ import { ArticleDetailViewModel } from "./ArticleDetailViewModel";
 import Loader from "@components/Loader/Loader"; // ✅ Importujeme Loader
 import Article from "@components/Article/Article";
 
-const ArticleDetail: React.FC<{ viewModel: ArticleDetailViewModel }> = ({ viewModel }) => {
+type ArticleDetailProps = {
+  type?: string;
+};
+
+const ArticleDetail: React.FC<ArticleDetailProps & { viewModel: ArticleDetailViewModel }> = ({ viewModel, type = "dso" }) => {
   const { article, loading } = viewModel;
 
   if (loading) {
@@ -16,7 +20,7 @@ const ArticleDetail: React.FC<{ viewModel: ArticleDetailViewModel }> = ({ viewMo
   }
 
   return (
-    <Article article={article} />
+    <Article article={article} type={type} />
   );
 };
 

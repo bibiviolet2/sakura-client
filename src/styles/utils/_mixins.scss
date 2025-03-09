@@ -13,3 +13,11 @@
 		background-image: linear-gradient(to right, $start-color, $end-color);
 	}
 }
+
+@mixin hover {
+	@media (hover: hover) {
+		&:hover {
+			@content; // Umožní vnoření dalších selektorů
+		}
+	}
+}

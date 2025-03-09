@@ -5,13 +5,14 @@ type PageProps = {
   children: React.ReactNode;
   header?: React.ReactNode;
   headlineText?: string;
+  type?: string;
 };
 
-const Page: React.FC<PageProps> = ({ children, header, headlineText }) => {
+const Page: React.FC<PageProps> = ({ children, header, headlineText, type = "dso" }) => {
   return (
-    <div className="page">
+    <div className={`page page--${type}`}>
 		<div className="container container--main">
-			{header || headlineText && <Header headlineText={headlineText}>{header}</Header>}
+			{(header || headlineText) && <Header headlineText={headlineText}>{header}</Header>}
 
 			<div className="layout">
 				<main>{children}</main>

@@ -5,7 +5,9 @@ const MainNav: React.FC = () => {
   return (
     <nav className="nav--main">
       <div className="container">
-        <Link to="/">Domů</Link> <span className="hidden-for-screen-readers">|</span> <Link to="/manzele-tarisovi/sheena">Kapitola Sheena</Link>
+        <Link to="/">Domů</Link> <span className="hidden-for-screen-readers">|</span> 
+		<Link to="/manzele-tarisovi/sheena">knihy Dcera svého otce</Link> <span className="hidden-for-screen-readers">|</span> 
+		<Link to="/manzele-tarisovi/sheena">Články Sakura</Link>
       </div>
     </nav>
   );
