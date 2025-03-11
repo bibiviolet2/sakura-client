@@ -13,7 +13,7 @@ const Home: React.FC<{ viewModel: HomeViewModel }> = ({ viewModel }) => {
           <h1 className="header__title">
             {viewModel.title} <span className="hidden-for-screen-readers">Online</span>
           </h1>
-          <p>{viewModel.subtitle}</p>
+          <Text>{viewModel.subtitle}</Text>
         </>
       }
     >
