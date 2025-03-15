@@ -17,11 +17,11 @@
 
 	&--main {
 		background: transparent no-repeat url(../../public/images/layout/main-bg.svg) right top;
-		background-size: 200px;
+		background-size: rem(200);
 		min-height: rem(300);
 
 		@include media-up(md) {
-			background-size: 100%;
+			background-size: rem(500);
 		}
 	}
 }

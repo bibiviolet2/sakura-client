@@ -1,0 +1,20 @@
+.page {
+	.article__content {
+
+		ul,
+		ul li {
+			font-size: rem(20);
+			line-height: rem(30);
+			margin-top: rem(12);
+		}
+
+		ul {
+			margin-bottom: rem(30);
+		}
+
+		ul li {
+			list-style-type: disc;
+			margin-left: rem(30);
+		}
+	}
+}

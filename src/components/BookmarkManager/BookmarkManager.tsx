@@ -38,9 +38,6 @@ const BookmarkManager = () => {
           const bookmarkData = JSON.stringify({ page: currentPage, id: p.id });
           setCookie("bookmark", bookmarkData, { path: "/", maxAge: 604800 });
 
-          paragraphs.forEach((para) => para.classList.remove("saved-bookmark"));
-          p.classList.add("saved-bookmark");
-
           setSavedBookmark(p.id);
           setIsBookmarkVisible(true);
         };
@@ -72,6 +69,8 @@ const BookmarkManager = () => {
           setSavedBookmark(null);
           setIsBookmarkVisible(false);
         }, 2000);
+
+        savedElement.classList.add("saved-bookmark");
       }
     }
   };

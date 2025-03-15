@@ -1,7 +1,7 @@
 import { makeAutoObservable, observable } from "mobx";
 import { matchPath } from "react-router-dom";
 import { ArticleService } from "@services/ArticleService";
-import { injectable, inject } from "inversify";
+import { inject } from "inversify";
 
 export class ArticleDetailViewModel {
   categoryId = "";

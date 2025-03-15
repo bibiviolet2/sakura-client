@@ -1,5 +1,6 @@
 import rehypeSeparator from "@plugins/rehype/rehypeSeparator";
 import remarkCzechTypo from "@plugins/remark/remarkCzechTypo ";
+import remarkRemoveImages from "@plugins/remark/remarkRemoveImages";
 import React, { HTMLAttributes } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -12,7 +13,7 @@ type TextProps = HTMLAttributes<HTMLDivElement> & {
 const Text: React.FC<TextProps> = ({ children, type = "fire", className = "", ...props }) => {
   return (
     <div className={`formatted-markdown formatted-markdown--${type} ${className}`} {...props}>
-      <ReactMarkdown remarkPlugins={[remarkCzechTypo]} rehypePlugins={[rehypeRaw, rehypeSeparator]}>
+      <ReactMarkdown remarkPlugins={[remarkCzechTypo, remarkRemoveImages]} rehypePlugins={[rehypeRaw, rehypeSeparator]}>
         {children}
       </ReactMarkdown>
     </div>
