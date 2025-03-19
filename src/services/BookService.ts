@@ -1,15 +1,14 @@
 import { action, makeAutoObservable } from "mobx";
 import "reflect-metadata";
-import { getArticle } from "@graphql/queries/GetArticle";
-import ArticleModel from "@models/ArticleModel";
-import ChapterModel from "@models/ChapterModel";
 import client from "@lib/apollo-client";
 import { Service } from "@decorator/Service";
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
+import BookModel from "@models/BookModel";
+import { getBook } from "@graphql/queries/GetBook";
 
 @Service
-export class ArticleService {
-  article: ArticleModel | null = null;
+export class BookService {
+  book: BookModel | null = null;
   loading = false;
   error: string | null = null;
   client: ApolloClient<NormalizedCacheObject>;
@@ -19,23 +18,23 @@ export class ArticleService {
     this.client = client;
   }
 
-  @action async loadArticle(articleId: string) {
-    if (!articleId) return;
+  @action async loadBook(bookId: string) {
+    if (!bookId) return;
 
     this.loading = true;
     this.error = null;
 
     try {
       const { data } = await this.client.query({
-        query: getArticle,
-        variables: { slug: articleId },
+        query: getBook,
+        variables: { slug: bookId },
       });
 
-      if (data.chapter && data.chapter.results.length > 0) {
-        this.article = new ChapterModel();
-        this.article.update(data.chapter.results[0]);
+      if (data.book && data.book.results.length > 0) {
+        this.book = new BookModel();
+        this.book.update(data.chapter.results[0]);
       } else {
-        this.article = null;
+        this.book = null;
         this.error = "Článek nebyl nalezen.";
       }
 

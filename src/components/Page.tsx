@@ -6,9 +6,10 @@ type PageProps = {
   header?: React.ReactNode;
   headlineText?: string;
   type?: string;
+  aside?: React.ReactNode;
 };
 
-const Page: React.FC<PageProps> = ({ children, header, headlineText, type = "dso" }) => {
+const Page: React.FC<PageProps> = ({ children, aside, header, headlineText, type = "dso" }) => {
   return (
     <div className={`page page--${type}`}>
 		<div className="container container--main">
@@ -17,17 +18,7 @@ const Page: React.FC<PageProps> = ({ children, header, headlineText, type = "dso
 			<div className="layout">
 				<main>{children}</main>
 				<aside>
-					{/* <section>
-					<h2>Prozkoumej kategorie</h2>
-					<ul>
-						<li>
-						<a href="/hodnoty">💖 Hodnoty</a>
-						</li>
-						<li>
-						<a href="/filozofie">📖 Filozofie</a>
-						</li>
-					</ul>
-					</section> */}
+					{aside}
 				</aside>
 			</div>
 		</div>

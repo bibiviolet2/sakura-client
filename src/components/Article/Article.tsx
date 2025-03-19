@@ -9,13 +9,15 @@ import BookmarkManager from "@components/BookmarkManager/BookmarkManager";
 type ArticleProps = {
   article: ArticleModel;
   type?: string;
+  aside?: React.ReactNode;
 };
 
-const Article: React.FC<ArticleProps> = ({ article, type = "dso" }) => {
+const Article: React.FC<ArticleProps> = ({ article, aside, type = "dso" }) => {
   return (
     <Page
         headlineText={article.title}
         type={type}
+        aside={aside}
     >
           <BookmarkManager />
         <div className="article__content">

@@ -15,7 +15,7 @@ const rehypeSeparator = () => {
 
       const textNode = node.children[0];
 
-      if (textNode.type === "text" && textNode.value.trim() === "***") {
+      if (textNode.type === "text" && (textNode.value.trim() === "***" || textNode.value.trim() === "AAA")) {
         const fireIcon = h("svg", { 
           width: 24, height: 24, viewBox: "0 0 16 16", "aria-hidden": "true",
           stroke: "currentColor", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg"
