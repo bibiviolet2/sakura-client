@@ -8,6 +8,7 @@ import { HomeViewModel } from "./HomeViewModel";
 const Home: React.FC<{ viewModel: HomeViewModel }> = ({ viewModel }) => {
   return (
     <Page
+      type="home"
       header={
         <>
           <h1 className="header__title">

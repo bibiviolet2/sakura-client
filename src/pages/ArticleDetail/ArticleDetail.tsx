@@ -13,7 +13,11 @@ const ArticleDetail: React.FC<ArticleDetailProps & { viewModel: ArticleDetailVie
   const { article, loading } = viewModel;
 
   if (loading) {
-    return <Loader />; // ✅ Použití Loader komponenty
+    return <Page
+    headlineText="Načítám..."
+  >
+    <Loader />
+  </Page>;
   }
 
   if (!article) {
