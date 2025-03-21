@@ -1,21 +1,85 @@
 .page {
-	&--dso {
-		.separator {
-			text-align: center;
+  &--dso {
+    .separator {
+      text-align: center;
 
-			svg {
-				width: rem(16);
-				height: rem(16px);
+      svg {
+        width: rem(16);
+        height: rem(16px);
 
-				path {
-					fill: #eee;
-					stroke: #444;
-				}
+        path {
+          fill: #eee;
+          stroke: #444;
+        }
 
-				+ svg {
-					margin-left: rem(3);
-				}
-			}
-		}
-	}
+        + svg {
+          margin-left: rem(3);
+        }
+      }
+    }
+  }
+}
+
+aside {
+  h2 {
+    margin-bottom: rem(12);
+    margin-left: rem(3);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--primary-color);
+    font-weight: 400;
+    padding-bottom: rem(5);
+    font-size: rem(21);
+    text-align: right;
+    position: relative;
+
+    &:before {
+      content: "🌸";
+      font-size: rem(12);
+      border: 1px solid var(--primary-color);
+      border-radius: 50%;
+      display: inline-block;
+      width: rem(20);
+      height: rem(20);
+      position: absolute;
+      bottom: rem(-10);
+      left: rem(0);
+      background: #fff;
+      text-align: center;
+      padding-top: rem(3);
+    }
+  }
+
+  nav {
+    ul li {
+      text-transform: uppercase;
+      padding-left: rem(8);
+
+      + li {
+        margin-top: rem(10);
+      }
+
+      a {
+        color: #666;
+        text-decoration: none;
+
+        &:hover {
+          color: #000;
+        }
+
+        &:before {
+          content: "::";
+          margin-right: rem(12);
+        }
+      }
+
+      a.active {
+        color: #000;
+        text-decoration: none;
+
+        &::before {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
 }

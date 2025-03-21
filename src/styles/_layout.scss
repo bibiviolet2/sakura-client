@@ -1,140 +1,135 @@
 .container {
-	width: 100%;
-	margin: 0 auto;
-	padding: 0 rem(20);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 rem(20);
 
-	@include media-up(lg) {
-		max-width: rem(750);
-	}
+  @include media-up(lg) {
+    max-width: rem(750);
+  }
 
-	@include media-up(xl) {
-		max-width: rem(1100);
-	}
+  @include media-up(xl) {
+    max-width: rem(1100);
+  }
 
-	@include media-up(xxl) {
-		max-width: rem(1200);
-	}
+  @include media-up(xxl) {
+    max-width: rem(1200);
+  }
 
-	&--main {
-		background: transparent no-repeat url(../../public/images/layout/main-bg.svg) right top;
-		background-size: rem(200);
-		min-height: rem(300);
+  &--main {
+    background: transparent no-repeat
+      url(../../public/images/layout/main-bg.svg) right top;
+    background-size: rem(200);
+    min-height: rem(300);
 
-		@include media-up(md) {
-			background-size: rem(500);
-		}
-	}
+    @include media-up(md) {
+      background-size: rem(500);
+    }
+  }
 }
 
 .layout {
-	display: grid;
-	gap: 1rem;
-	align-items: start;
-	grid-template-columns: 1fr;
+  display: grid;
+  gap: rem(50);
+  align-items: start;
+  grid-template-columns: 1fr;
 
-	aside {
-		display: none;
-	}
+  @include media-up(lg) {
+    grid-template-columns: 1fr rem(300);
 
-	@include media-up(lg) {
-		grid-template-columns: 1fr rem(400);
-
-		aside {
-			background: #f8f8f8;
-			padding: 1rem;
-		}
-	}
+    aside {
+      margin-top: rem(300);
+    }
+  }
 }
 
 // 🎯 Header
 .header {
+  @include media-up(md) {
+    margin-right: rem(380);
+  }
 
-	@include media-up(md) {
-		margin-right: rem(380);
-	}
+  p {
+    background: rgba(255, 255, 255, 0.9);
+  }
 
-	p {
-		background: rgba(255, 255, 255, 0.9);
-	}
+  &__title {
+    margin: 0 0 rem(30) 0;
+    margin-right: rem(120);
+    font-size: rem(30);
+    padding-top: rem(30);
+    font-weight: 300;
+    text-transform: uppercase;
+    @include gradient-border;
 
-	&__title {
-		margin: 0 0 rem(30) 0;
-		margin-right: rem(120);
-		font-size: rem(30);
-		padding-top: rem(30);
-		font-weight: 300;
-		text-transform: uppercase;
-		@include gradient-border;
-
-		@include media-up(md) {
-			margin-right: 0;
-			font-size: rem(40);
-			padding-top: rem(60);
-		}
-	}
+    @include media-up(md) {
+      margin-right: 0;
+      font-size: rem(40);
+      padding-top: rem(60);
+    }
+  }
 }
 
 // 🎯 Sidebar
 .sidebar {
-	background: #f8f8f8;
-	padding: 1rem;
-	border-radius: 8px;
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 8px;
 
-	&__title {
-		font-size: 1.2rem;
-		margin-bottom: 1rem;
-	}
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
 
-	&__list {
-		list-style: none;
-		padding: 0;
-	}
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
 
-	&__item {
-		margin-bottom: 0.5rem;
-	}
+  &__item {
+    margin-bottom: 0.5rem;
+  }
 
-	&__link {
-		color: #b34a50;
-		text-decoration: none;
-	}
+  &__link {
+    color: #b34a50;
+    text-decoration: none;
+  }
 }
 
 .nav {
-	&--main {
-		padding: rem(6) 0;
-		text-align: right;
-		color: #fff;
-		background-color: var(--secondary-color);
-		font-family: sans-serif;
-		font-size: rem(14);
+  &--main {
+    padding: rem(6) 0;
+    text-align: right;
+    color: #fff;
+    background-color: var(--secondary-color);
+    font-family: sans-serif;
+    font-size: rem(14);
 
-		a {
-			color: #fff;
-			text-decoration: none;
-			display: inline-block;
-			line-height: 1;
-			padding: 0 rem(3);
+    a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 1;
+      padding: 0 rem(3);
 
-			+ span + a {
-				border-left: 1px solid #fff;
-				padding-left: rem(6);
-			}
-		}
-	}
+      + span + a {
+        border-left: 1px solid #fff;
+        padding-left: rem(6);
+      }
+    }
+  }
 }
 
 // 🎯 Footer
 .footer {
-	background-color: var(--secondary-color);
-	color: white;
-	text-align: center;
-	padding: 1rem;
-	margin-top: 2rem;
-	margin-left: rem(-40);
-	margin-right: rem(-40);
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-left: rem(-40);
+  margin-right: rem(-40);
 
-	&__text {
-		margin: 0;
-	}
+  &__text {
+    margin: 0;
+  }
 }

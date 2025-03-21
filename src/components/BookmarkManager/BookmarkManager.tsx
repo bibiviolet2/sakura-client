@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import "./BookmarkManager.scss"; 
+import "./BookmarkManager.scss";
 import { BookmarksIcon } from "@components/Icons";
 
 const BookmarkManager = () => {
@@ -32,7 +32,7 @@ const BookmarkManager = () => {
         const btn = document.createElement("button");
         btn.innerHTML = bookmarkIcon;
         btn.className = "bookmark-btn";
-        btn.title = "Uložit záložku - příště mě upozorni, že jsem zde skončil."
+        btn.title = "Uložit záložku - příště mě upozorni, že jsem zde skončil.";
 
         btn.onclick = () => {
           const bookmarkData = JSON.stringify({ page: currentPage, id: p.id });
@@ -45,17 +45,15 @@ const BookmarkManager = () => {
         p.prepend(btn);
       }
     });
-  }
+  };
 
   useEffect(() => {
-
     if (cookies.bookmark && cookies.bookmark.page === currentPage) {
       setSavedBookmark(cookies.bookmark.id);
       setIsBookmarkVisible(true);
     }
 
     makeParagraphs();
-
   }, []);
 
   const goToBookmark = () => {
