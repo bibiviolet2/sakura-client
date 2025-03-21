@@ -1,51 +1,47 @@
 // 🎨 Definice CSS proměnných
 :root {
-	--primary-color: #E66591; // Sakura růžová
-	--secondary-color: #333; // Tmavá pro texty
-	--background-color: #fff; // Světlé pozadí
-	--primary-light: #fde9eb;
-	--border-color: #ddd;
-	--gradient-color-primary: #FFA3CB;
-	--gradient-color-secondary: #99627A;
-	--text-color: var(--secondary-color);
-	--font-family: "Crimson Pro", sans-serif;
+  --primary-color: #e66591; // Sakura růžová
+  --secondary-color: #333; // Tmavá pro texty
+  --background-color: #fff; // Světlé pozadí
+  --primary-light: #fde9eb;
+  --border-color: #ddd;
+  --gradient-color-primary: #ffa3cb;
+  --gradient-color-secondary: #99627a;
+  --text-color: var(--secondary-color);
+  --font-family: "Crimson Pro", sans-serif;
 }
 
 // 🎭 Reset + základní nastavení
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: var(--font-family);
-	background-color: var(--background-color);
-	color: var(--text-color);
-	line-height: rem(30);
-	font-size: rem(20);
-	font-display: swap;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: rem(30);
+  font-size: rem(20);
+  font-display: swap;
 }
 
 p {
-	font-size: rem(20);
-	line-height: rem(30);
-	margin-top: rem(12);
+  font-size: rem(20);
+  line-height: rem(30);
+  margin-top: rem(12);
 }
 
 h2 {
-	font-size: rem(20);
-	margin: rem(32) 0 0 0;
-}
-
-aside {
-	margin-top: rem(150);
+  font-size: rem(20);
+  margin: rem(32) 0 0 0;
 }
 
 strong {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .hidden-for-screen-readers {
-	display: none;
+  display: none;
 }

@@ -29,18 +29,16 @@ export class BookService {
         query: getBook,
         variables: { slug: bookId },
       });
-
       if (data.book && data.book.results.length > 0) {
         this.book = new BookModel();
-        this.book.update(data.chapter.results[0]);
+        this.book.update(data.book.results[0]);
       } else {
         this.book = null;
-        this.error = "Článek nebyl nalezen.";
+        this.error = "Kniha nebyla nalezen.";
       }
-
       this.loading = false;
     } catch (error) {
-      this.error = "Chyba při načítání článku.";
+      this.error = "Chyba při načítání knihy.";
       this.loading = false;
     }
   }

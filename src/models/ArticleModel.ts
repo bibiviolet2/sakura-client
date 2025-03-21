@@ -21,9 +21,9 @@ class ArticleModel {
   @action update<T extends Partial<ArticleModel>>(json: T) {
     this.title = json.title ?? "";
     this.content = json.content ?? "";
+    this.slug = json.slug ?? "";
     this.order = json.order ?? 0;
   }
 }
 
 export default ArticleModel;
-
