@@ -18,10 +18,38 @@ const ArticleDSOAside: React.FC<ArticleDSOAsideProps> = observer(({ vm }) => {
 
   return (
     <nav>
-      <h2>
-        <BookmarkIcon /> {book?.name}
-      </h2>
+      <h2>{book?.name}</h2>
       <ul>
+        {vm.articles?.map((article) => (
+          <li key={article.slug}>
+            <Link
+              to={`/${book?.slug}/${article.slug}`}
+              className={article.slug === vm.articleId ? "active" : ""}
+            >
+              {article.title}
+            </Link>
+          </li>
+        ))}
+        {vm.articles?.map((article) => (
+          <li key={article.slug}>
+            <Link
+              to={`/${book?.slug}/${article.slug}`}
+              className={article.slug === vm.articleId ? "active" : ""}
+            >
+              {article.title}
+            </Link>
+          </li>
+        ))}
+        {vm.articles?.map((article) => (
+          <li key={article.slug}>
+            <Link
+              to={`/${book?.slug}/${article.slug}`}
+              className={article.slug === vm.articleId ? "active" : ""}
+            >
+              {article.title}
+            </Link>
+          </li>
+        ))}
         {vm.articles?.map((article) => (
           <li key={article.slug}>
             <Link

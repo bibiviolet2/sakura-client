@@ -1,83 +1,89 @@
 @import "@styles/utils";
 
 p[id^="paragraph-"] {
-	position: relative;
-	margin-left: rem(-25);
-	padding-left: rem(25);
+  button {
+    display: none;
+  }
 
-	button {
-		display: none;
-	}
+  @include media-up(md) {
+    position: relative;
+    margin-left: rem(-25);
+    padding-left: rem(25);
 
-	@include hover {
-		button {
-			display: block;
-		}
-	}
+    button {
+      display: none;
+    }
+
+    @include hover {
+      button {
+        display: block;
+      }
+    }
+  }
 }
 
 // 📌 Styl tlačítka na uložení záložky (vedle odstavce)
 .bookmark-btn {
-	position: absolute;
-	left: 0;
-	top: 0;
-	padding: rem(2) rem(5);
-	cursor: pointer;
-	transition: background-color 0.3s ease-in-out;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: rem(2) rem(5);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 
-	svg {
-		width: rem(14);
-		height: rem(14);
+  svg {
+    width: rem(14);
+    height: rem(14);
 
-		path {
-			fill: var(--primary-color);
-		}
-	}
+    path {
+      fill: var(--primary-color);
+    }
+  }
 }
 
 // 📌 Styl tlačítka pro pokračování v čtení (pevná pozice ve spodní části)
 .bookmark-notification {
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	background: var(--background-color);
-	padding: 10px 15px;
-	border-radius: 8px;
-	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
-	border: 1px solid var(--border-color);
-	cursor: pointer;
-	font-weight: bold;
-	transition: opacity 0.3s ease-in-out;
-	z-index: 2;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--background-color);
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
 
-	&:hover {
-		opacity: 0.8;
-	}
+  &:hover {
+    opacity: 0.8;
+  }
 
-	svg {
-		width: rem(14);
-		height: rem(14);
-		position: relative;
-		top: 2px;
-		margin-right: rem(4);
+  svg {
+    width: rem(14);
+    height: rem(14);
+    position: relative;
+    top: 2px;
+    margin-right: rem(4);
 
-		path {
-			fill: var(--primary-color);
-		}
-	}
+    path {
+      fill: var(--primary-color);
+    }
+  }
 }
 
 // 📌 Zvýraznění uloženého odstavce
 .saved-bookmark {
-	background-color: var(--primary-light);
-	transition: background-color 0.5s ease-in-out;
+  background-color: var(--primary-light);
+  transition: background-color 0.5s ease-in-out;
 
-	&::before {
-		content: "Záložka načtena";
-		display: block;
-		margin-bottom: 5px;
-		color: #ff69b4; // Růžová barva
-		font-size: rem(14);
-		text-align: center;
-	}
+  &::before {
+    content: "Záložka načtena";
+    display: block;
+    margin-bottom: 5px;
+    color: #ff69b4; // Růžová barva
+    font-size: rem(14);
+    text-align: center;
+  }
 }

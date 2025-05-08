@@ -1,23 +1,33 @@
 // utils/_mixins.scss
-@mixin gradient-border($height: 1px, $start-color: var(--gradient-color-primary), $end-color: var(--gradient-color-secondary)) {
-	position: relative;
-	padding-bottom: rem(4);
+@mixin gradient-border(
+  $height: 1px,
+  $start-color: var(--gradient-color-primary),
+  $end-color: var(--gradient-color-secondary)
+) {
+  position: relative;
+  padding-bottom: rem(4);
 
-	&::after {
-		content: "";
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: $height;
-		background-image: linear-gradient(to right, $start-color, $end-color);
-	}
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $height;
+    background-image: linear-gradient(to right, $start-color, $end-color);
+  }
 }
 
 @mixin hover {
-	@media (hover: hover) {
-		&:hover {
-			@content; // Umožní vnoření dalších selektorů
-		}
-	}
+  @media (hover: hover) {
+    &:hover {
+      @content; // Umožní vnoření dalších selektorů
+    }
+  }
+}
+
+@mixin touch {
+  @media (hover: none) {
+    @content;
+  }
 }
