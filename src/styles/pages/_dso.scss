@@ -17,6 +17,12 @@
         }
       }
     }
+
+    .container--main {
+      background: transparent no-repeat
+        url(../../../public/images/layout/dso-fire-bg.svg) right -75px;
+      background-size: rem(300);
+    }
   }
 }
 
@@ -46,11 +52,6 @@ aside {
       background: #fff;
       text-align: center;
       padding-top: rem(3);
-    }
-
-    svg {
-      width: rem(16);
-      height: auto;
     }
   }
 

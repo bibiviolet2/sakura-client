@@ -11,9 +11,13 @@ const ArticleDetail: React.FC<{ viewModel: ArticleDetailViewModel }> = observer(
   ({ viewModel }) => {
     const { article, loading, book } = viewModel;
 
-    if (loading) {
-      return <Loader />; // ✅ Použití Loader komponenty
-    }
+  if (loading) {
+    return <Page
+    headlineText="Načítám..."
+  >
+    <Loader />
+  </Page>;
+  }
 
     if (!article) {
       return (
