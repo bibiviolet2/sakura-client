@@ -1,5 +1,12 @@
 .page {
   &--dso {
+    position: relative;
+
+    .header {
+      &__title {
+        margin-right: rem(70);
+      }
+    }
     .separator {
       text-align: center;
 
@@ -20,8 +27,24 @@
 
     .container--main {
       background: transparent no-repeat
-        url(../../../public/images/layout/dso-fire-bg.svg) right -75px;
-      background-size: rem(300);
+        url(../../../public/images/layout/dso-fire-bg.svg) right -15px;
+      background-size: rem(60);
+
+      @include media-up(md) {
+        background: transparent no-repeat
+          url(../../../public/images/layout/dso-fire-bg.svg) right -75px;
+        background-size: rem(300);
+      }
+    }
+
+    aside {
+      position: fixed;
+      top: calc(100% - 100px);
+      left: 0;
+
+      @include media-up(md) {
+        position: static;
+      }
     }
   }
 }

@@ -1,4 +1,3 @@
-import { BookmarkIcon } from "@components/Icons";
 import Loader from "@components/Loader/Loader";
 import { ArticleDetailViewModel } from "@pages/ArticleDetail/ArticleDetailViewModel";
 import { observer } from "mobx-react";
@@ -17,51 +16,54 @@ const ArticleDSOAside: React.FC<ArticleDSOAsideProps> = observer(({ vm }) => {
   }
 
   return (
-    <nav>
-      <h2>{book?.name}</h2>
-      <ul>
-        {vm.articles?.map((article) => (
-          <li key={article.slug}>
-            <Link
-              to={`/${book?.slug}/${article.slug}`}
-              className={article.slug === vm.articleId ? "active" : ""}
-            >
-              {article.title}
-            </Link>
-          </li>
-        ))}
-        {vm.articles?.map((article) => (
-          <li key={article.slug}>
-            <Link
-              to={`/${book?.slug}/${article.slug}`}
-              className={article.slug === vm.articleId ? "active" : ""}
-            >
-              {article.title}
-            </Link>
-          </li>
-        ))}
-        {vm.articles?.map((article) => (
-          <li key={article.slug}>
-            <Link
-              to={`/${book?.slug}/${article.slug}`}
-              className={article.slug === vm.articleId ? "active" : ""}
-            >
-              {article.title}
-            </Link>
-          </li>
-        ))}
-        {vm.articles?.map((article) => (
-          <li key={article.slug}>
-            <Link
-              to={`/${book?.slug}/${article.slug}`}
-              className={article.slug === vm.articleId ? "active" : ""}
-            >
-              {article.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <>
+      <nav className="aside__nav">něco</nav>
+      <nav className="aside__chapters">
+        <h2>{book?.name}</h2>
+        <ul>
+          {vm.articles?.map((article) => (
+            <li key={article.slug}>
+              <Link
+                to={`/${book?.slug}/${article.slug}`}
+                className={article.slug === vm.articleId ? "active" : ""}
+              >
+                {article.title}
+              </Link>
+            </li>
+          ))}
+          {vm.articles?.map((article) => (
+            <li key={article.slug}>
+              <Link
+                to={`/${book?.slug}/${article.slug}`}
+                className={article.slug === vm.articleId ? "active" : ""}
+              >
+                {article.title}
+              </Link>
+            </li>
+          ))}
+          {vm.articles?.map((article) => (
+            <li key={article.slug}>
+              <Link
+                to={`/${book?.slug}/${article.slug}`}
+                className={article.slug === vm.articleId ? "active" : ""}
+              >
+                {article.title}
+              </Link>
+            </li>
+          ))}
+          {vm.articles?.map((article) => (
+            <li key={article.slug}>
+              <Link
+                to={`/${book?.slug}/${article.slug}`}
+                className={article.slug === vm.articleId ? "active" : ""}
+              >
+                {article.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
   );
 });
 
