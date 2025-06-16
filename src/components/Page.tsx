@@ -10,13 +10,7 @@ type PageProps = {
   aside?: React.ReactNode;
 };
 
-const Page: React.FC<PageProps> = ({
-  children,
-  aside,
-  header,
-  headlineText,
-  type = "dso",
-}) => {
+const Page: React.FC<PageProps> = ({ children, header, headlineText }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -24,7 +18,7 @@ const Page: React.FC<PageProps> = ({
       exit={{ opacity: 0, x: -20 }}
       transition={{ duration: 0.5 }}
     >
-      <div className={`page page--${type}`}>
+      <div className={`page`}>
         <div className="container container--main">
           {(header || headlineText) && (
             <Header headlineText={headlineText}>{header}</Header>
@@ -32,7 +26,6 @@ const Page: React.FC<PageProps> = ({
 
           <div className="layout">
             <main>{children}</main>
-            <aside>{aside}</aside>
           </div>
         </div>
       </div>

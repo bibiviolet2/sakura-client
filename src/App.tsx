@@ -1,19 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "@pages/Home/Home";
-import ArticleDetail from "@pages/ArticleDetail/ArticleDetail";
 import Footer from "@components/Footer/Footer";
-import MainNav from "@components/MainNav/MainNav";
 import { AnimatePresence } from "framer-motion";
+import MainHeader from "@components/MainHeader/MainHeader";
+import ChapterDetail from "@pages/ChapterDetail/ChapterDetail";
 
 const App = () => {
   return (
     <Router>
       <AnimatePresence mode="wait">
-        <MainNav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/:categoryId/:articleId" element={<ArticleDetail/>} />
-          </Routes>
+        <MainHeader />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:bookSlug/:chapterSlug" element={<ChapterDetail />} />
+        </Routes>
         <Footer />
       </AnimatePresence>
     </Router>
